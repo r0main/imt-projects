@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ioc- java - autre" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="Application" />
+    <module name="ioc-java" />
+    <option name="PROGRAM_PARAMETERS" value="8141" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
