@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ioc-spring" target="1.5" />
+      <module name="ioc-spring" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
