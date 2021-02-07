@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ioc- spring lifecycle" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.lifecycle.Application" />
-    <module name="spring-ioc" />
+    <module name="ioc-spring" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="fr.romaingervais.imt.lifecycle.*" />

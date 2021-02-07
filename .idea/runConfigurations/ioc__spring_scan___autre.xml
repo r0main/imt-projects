@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ioc- spring scan - autre" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.scan.Application" />
-    <module name="spring-ioc" />
+    <module name="ioc-spring" />
     <option name="PROGRAM_PARAMETERS" value="9999" />
     <extension name="coverage">
       <pattern>
