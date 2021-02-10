@@ -1,12 +1,7 @@
 package fr.romaingervais.imt.properties;
 
-import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.MapPropertySource;
-import org.springframework.core.env.PropertySource;
 import org.springframework.stereotype.Repository;
-
-import java.util.Iterator;
 
 @Repository
 public class TrainRepositoryViaEnvironnement {
