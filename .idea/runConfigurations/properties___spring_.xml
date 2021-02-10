@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ioc- spring properties" type="Application" factoryName="Application">
+  <configuration default="false" name="properties - spring " type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.properties.Application" />
-    <module name="ioc-spring" />
+    <module name="properties-spring" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="fr.romaingervais.imt.properties.*" />
