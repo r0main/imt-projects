@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="transactions - spring" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.transactions.Application" />
+    <module name="transactions-spring" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="fr.romaingervais.imt.transactions.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

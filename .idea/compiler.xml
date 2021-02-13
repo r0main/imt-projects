@@ -7,14 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ioc-spring" />
-        <module name="properties-spring" />
         <module name="aop-spring" />
+        <module name="properties-spring" />
+        <module name="transactions-spring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="aop-spring" target="11" />
       <module name="ioc-spring" target="11" />
       <module name="properties-spring" target="11" />
+      <module name="transactions-spring" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
