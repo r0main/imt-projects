@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BankServiceJdbc {
@@ -54,19 +56,28 @@ public class BankServiceJdbc {
     }
 
     public void showAccounts() throws SQLException {
+        List<Account> allAccounts = findAllAccount();
+        for (Account account : allAccounts) {
+            System.out.println(account.getAccountId() + " = " + account.getTotal());
+        }
+    }
+
+    public List<Account> findAllAccount() throws SQLException {
+        List<Account> allAccounts = new ArrayList<>();
         try (Connection con = dataSource.getConnection()) {
             String sql = "select * from accounts";
             try (PreparedStatement selectAllFromAccounts = con.prepareStatement(sql)) {
                 try (ResultSet resultSet = selectAllFromAccounts.executeQuery()) {
                     while (resultSet.next()) {
                         String accountId = resultSet.getString("accountId");
-                        double amount = resultSet.getDouble("total");
-                        System.out.println(accountId + " = " + amount);
+                        double total = resultSet.getDouble("total");
+                        allAccounts.add(new Account(accountId, total));
                     }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        return allAccounts;
     }
 }

@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BankServiceSpring {
@@ -51,19 +53,28 @@ public class BankServiceSpring {
     }
 
     public void showAccounts() throws SQLException {
+        List<Account> allAccounts = findAllAccounts();
+        for (Account account : allAccounts) {
+            System.out.println(account.getAccountId() + " = " + account.getTotal());
+        }
+    }
+
+    public List<Account> findAllAccounts() throws SQLException {
+        List<Account> allAccounts = new ArrayList<>();
         try (Connection con = dataSource.getConnection()) {
             String sql = "select * from accounts";
             try (PreparedStatement selectAllFromAccounts = con.prepareStatement(sql)) {
                 try (ResultSet resultSet = selectAllFromAccounts.executeQuery()) {
                     while (resultSet.next()) {
                         String accountId = resultSet.getString("accountId");
-                        double amount = resultSet.getDouble("total");
-                        System.out.println(accountId + " = " + amount);
+                        double total = resultSet.getDouble("total");
+                        allAccounts.add(new Account(accountId, total));
                     }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        return allAccounts;
     }
 }
