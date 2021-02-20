@@ -9,6 +9,7 @@
         <module name="ioc-spring" />
         <module name="aop-spring" />
         <module name="properties-spring" />
+        <module name="tests-java" />
         <module name="transactions-spring" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
       <module name="aop-spring" target="11" />
       <module name="ioc-spring" target="11" />
       <module name="properties-spring" target="11" />
+      <module name="tests-java" target="11" />
       <module name="transactions-spring" target="11" />
     </bytecodeTargetLevel>
   </component>
