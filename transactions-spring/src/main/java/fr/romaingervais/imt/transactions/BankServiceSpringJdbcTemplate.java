@@ -38,12 +38,11 @@ public class BankServiceSpringJdbcTemplate {
         }
     }
 
-    private List<Account> findAllAccounts() {
-        List<Account> allAccounts = jdbcTemplate.query("select * from accounts", (resultSet, rowNum) -> {
+    public List<Account> findAllAccounts() {
+        return jdbcTemplate.query("select * from accounts", (resultSet, rowNum) -> {
             String accountId = resultSet.getString("accountId");
             double total = resultSet.getDouble("total");
             return new Account(accountId, total);
         });
-        return allAccounts;
     }
 }
