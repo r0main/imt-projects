@@ -18,7 +18,7 @@ public class BankServiceJdbc {
         this.dataSource = dataSource;
     }
 
-    public void transfertMoney(String accountIdFrom, String accountIdTo, double amount) throws SQLException {
+    public void transferMoney(String accountIdFrom, String accountIdTo, double amount) throws SQLException {
         System.out.println("begin - tranfert money");
         try (Connection con = dataSource.getConnection()) {
             con.setAutoCommit(false);

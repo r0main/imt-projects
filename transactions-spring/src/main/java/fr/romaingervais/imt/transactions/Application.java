@@ -13,7 +13,7 @@ public class Application {
 
         bankService.showAccounts();
         try {
-            bankService.transfertMoney("imt-nantes", "rgervais", 100000);
+            bankService.transferMoney("imt-nantes", "rgervais", 100000);
         } finally {
             bankService.showAccounts();
         }

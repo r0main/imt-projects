@@ -19,7 +19,7 @@ public class BankServiceSpringJdbcTemplate {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void transfertMoney(String accountIdFrom, String accountIdTo, double amount) throws SQLException {
+    public void transferMoney(String accountIdFrom, String accountIdTo, double amount) throws SQLException {
         System.out.println("begin - tranfert money");
         try {
             jdbcTemplate.update("update accounts set total = (total - ?) where accountId = ?", amount, accountIdFrom);
