@@ -11,6 +11,7 @@
         <module name="properties-spring" />
         <module name="tests-java" />
         <module name="transactions-spring" />
+        <module name="tests-spring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
       <module name="ioc-spring" target="11" />
       <module name="properties-spring" target="11" />
       <module name="tests-java" target="11" />
+      <module name="tests-spring" target="11" />
       <module name="transactions-spring" target="11" />
     </bytecodeTargetLevel>
   </component>
