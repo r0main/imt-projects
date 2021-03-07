@@ -1,0 +1,8 @@
+server:
+  port: 8181
+
+logging.level:
+  org.springframework: WARN
+  org.springframework.test.context.jdbc: DEBUG
+  org.springframework.jdbc.datasource.init: DEBUG
+  fr.romaingervais.imt: INFO
