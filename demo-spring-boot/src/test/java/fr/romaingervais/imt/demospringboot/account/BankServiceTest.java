@@ -1,15 +1,10 @@
-package fr.romaingervais.imt.demospringboot.acount;
+package fr.romaingervais.imt.demospringboot.account;
 
-import fr.romaingervais.imt.demospringboot.account.Account;
-import fr.romaingervais.imt.demospringboot.account.BankService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.SQLException;
-import java.util.List;
 
 @SpringBootTest
 @Transactional
@@ -19,7 +14,7 @@ public class BankServiceTest {
     BankService bankService;
 
     @Test
-    void test_transferMoney_with_all_money_from_account() throws SQLException {
+    void test_transferMoney_with_all_money_from_account() {
         // Act
         bankService.transferMoney("imt-nantes", "rgervais", 100000);
 
@@ -32,7 +27,7 @@ public class BankServiceTest {
     }
 
     @Test
-    void test_transferMoney_with_more_money_than_account_total() throws SQLException {
+    void test_transferMoney_with_more_money_than_account_total() {
         // Act
         bankService.transferMoney("imt-nantes", "rgervais", 200000);
 

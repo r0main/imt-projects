@@ -1,7 +1,5 @@
 package fr.romaingervais.imt.demospringboot.utils;
 
-import fr.romaingervais.imt.demospringboot.account.Account;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,6 @@
-package fr.romaingervais.imt.demospringboot.acount;
+package fr.romaingervais.imt.demospringboot.account;
 
-import fr.romaingervais.imt.demospringboot.account.Account;
-import fr.romaingervais.imt.demospringboot.account.AccountRepository;
-import org.junit.jupiter.api.Assertions;
+import fr.romaingervais.imt.demospringboot.DemoSpringBootApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,10 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 import static fr.romaingervais.imt.demospringboot.utils.ListUtils.asList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-@SpringBootTest
+@SpringBootTest(classes = DemoSpringBootApplication.class)
 @Transactional
 public class AccountRepositoryTest {
 
