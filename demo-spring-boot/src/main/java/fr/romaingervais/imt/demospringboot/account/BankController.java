@@ -1,10 +1,11 @@
 package fr.romaingervais.imt.demospringboot.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/banks")
@@ -17,9 +18,25 @@ public class BankController {
         this.bankService = bankService;
     }
 
+    @GetMapping("/accounts")
+    public ResponseEntity<List<Account>> findAllAccounts() {
+        List<Account> accounts = bankService.findAllAccounts();
+        return ResponseEntity.ok(accounts);
+    }
+
+    @GetMapping("/accounts/{accountId}")
+    public ResponseEntity<Account> findAccountById(@PathVariable("accountId") String accountId) {
+        Optional<Account> accountById = bankService.findAccountById(accountId);
+        if (accountById.isPresent()) {
+            return ResponseEntity.ok(accountById.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/transfert-money")
-    public TransfertMoneyResponse transfertMoney(@RequestBody TransfertMoneyRequest request) {
+    public ResponseEntity<TransfertMoneyResponse> transfertMoney(@RequestBody TransfertMoneyRequest request) {
         bankService.transferMoney(request.getAccountIdFrom(), request.getAccountIdTo(), request.getAmount());
-        return TransfertMoneyResponse.ok();
+        return ResponseEntity.ok(TransfertMoneyResponse.ok());
     }
 }
