@@ -6,6 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AccountRepository extends CrudRepository<Account, String> {
 
@@ -17,4 +19,5 @@ public interface AccountRepository extends CrudRepository<Account, String> {
     @Query("update \"accounts\" set total = (total + :amount) where account_id = :accountId")
     int creditAccount(@Param("amount") Double amount, @Param("accountId") String accountId);
 
+    List<Account> findByTotalGreaterThanEqualOrderByTotalDesc(Double amount);
 }

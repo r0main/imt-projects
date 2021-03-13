@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
-import static fr.romaingervais.imt.demospringboot.utils.ListUtils.asList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest(classes = DemoSpringBootApplication.class)
@@ -22,7 +21,8 @@ public class AccountRepositoryTest {
 
     @Test
     void test_database_is_created_with_2_accounts() {
-        assertEquals(2, asList(accountRepository.findAll()).size());
+        Iterable<Account> all = accountRepository.findAll();
+        assertThat(all).hasSize(2);
     }
 
     @Test
@@ -32,8 +32,8 @@ public class AccountRepositoryTest {
 
         // ASSERT
         Optional<Account> romainsAccount = accountRepository.findById("rgervais");
-        assertTrue(romainsAccount.isPresent());
-        assertEquals(200.0, romainsAccount.get().getTotal());
+        assertThat(romainsAccount).isPresent();
+        assertThat(romainsAccount.get().getTotal()).isEqualTo(200.0);
     }
 
     @Test
@@ -43,7 +43,23 @@ public class AccountRepositoryTest {
 
         // ASSERT
         Optional<Account> romainsAccount = accountRepository.findById("rgervais");
-        assertTrue(romainsAccount.isPresent());
-        assertEquals(0.0, romainsAccount.get().getTotal());
+        assertThat(romainsAccount).isPresent();
+        assertThat(romainsAccount.get().getTotal()).isZero();
+    }
+
+    @Test
+    void test_find_greater_than_returning_multiple_accounts() {
+        List<Account> result = accountRepository.findByTotalGreaterThanEqualOrderByTotalDesc(100.0);
+        assertThat(result)
+                .extracting("accountId")
+                .containsOnly("rgervais", "imt-nantes");
+    }
+
+    @Test
+    void test_find_greater_than_returning_only_one_account() {
+        List<Account> result = accountRepository.findByTotalGreaterThanEqualOrderByTotalDesc(1000.0);
+        assertThat(result)
+                .extracting("accountId")
+                .containsOnly("imt-nantes");
     }
 }
