@@ -10,11 +10,6 @@ public class Account {
 
     private double total;
 
-    public Account(String accountId, double total) {
-        this.accountId = accountId;
-        this.total = total;
-    }
-
     public String getAccountId() {
         return accountId;
     }

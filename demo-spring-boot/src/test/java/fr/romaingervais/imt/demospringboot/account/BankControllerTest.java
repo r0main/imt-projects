@@ -14,6 +14,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.RequestEntity.post;
+import static org.springframework.http.RequestEntity.get;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @Transactional
@@ -45,7 +46,7 @@ class BankControllerTest {
         // ARRANGE
         RequestEntity<?> request = post(CONTROLLER_BASE_URL + "/transfert-money")
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(null);
+                .build();
 
         // ACT
         ResponseEntity<Map<String, Object>> response = testRestTemplate.exchange(request, new ParameterizedTypeReference<>() {});
@@ -58,5 +59,35 @@ class BankControllerTest {
                 .containsEntry("error", "Bad Request")
                 .containsEntry("path", "/api/banks/transfert-money")
                 .containsKey("timestamp"); // le timestamp change à chaque fois on ne peut pas faire un assert equals dessus
+    }
+
+    @Test
+    void test_find_by_acount_with_existing_account() {
+        // ARRANGE
+        String exstingAccountId = "rgervais";
+        RequestEntity<Void> request = get(CONTROLLER_BASE_URL + "/accounts/" + exstingAccountId).build();
+
+        // ACT
+        ResponseEntity<Account> response = testRestTemplate.exchange(request, Account.class);
+
+        // ASSERT
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getHeaders().getContentType()).isEqualTo(MediaType.APPLICATION_JSON);
+        assertThat(response.getBody().getAccountId()).isEqualTo(exstingAccountId);
+        assertThat(response.getBody().getTotal()).isEqualTo(100.0);
+    }
+
+    @Test
+    void test_find_by_acount_with_unexisting_account_return_404() {
+        // ARRANGE
+        String unExistingAccountId = "XXXXXX";
+        RequestEntity<Void> request = get(CONTROLLER_BASE_URL + "/accounts/" + unExistingAccountId).build();
+
+        // ACT
+        ResponseEntity<Account> response = testRestTemplate.exchange(request, Account.class);
+
+        // ASSERT
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody()).isNull();
     }
 }
