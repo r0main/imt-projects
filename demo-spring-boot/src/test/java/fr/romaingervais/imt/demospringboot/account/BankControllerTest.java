@@ -1,6 +1,7 @@
 package fr.romaingervais.imt.demospringboot.account;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
@@ -23,7 +24,8 @@ class BankControllerTest {
     static final String SERVER_URL = "http://localhost:8181";
     static final String CONTROLLER_BASE_URL = SERVER_URL + "/api/banks";
 
-    TestRestTemplate testRestTemplate = new TestRestTemplate();
+    @Autowired
+    TestRestTemplate testRestTemplate;
 
     @Test
     void test_transfertMoney_with_existing_account_should_return_OK() {
