@@ -61,4 +61,35 @@ public class AccountRepositoryTest {
                 .extracting("accountId")
                 .containsOnly("imt-nantes");
     }
+
+    @Test
+    void test_update_account() {
+        // ACT
+        Optional<Account> optionalAccount = accountRepository.findById("rgervais");
+        if (optionalAccount.isPresent()) {
+            Account account = optionalAccount.get();
+            account.setTotal(0);
+            accountRepository.save(account); // déclenche un UPDATE car isNew() retourne false
+        }
+
+        // ASSERT
+        Optional<Account> romainsAccount = accountRepository.findById("rgervais");
+        assertThat(romainsAccount).isPresent();
+        assertThat(romainsAccount.get().getTotal()).isZero();
+    }
+
+    @Test
+    void test_create_new_account() {
+        // ACT
+        Account account = new Account();
+        account.setNew(true);
+        account.setAccountId("tledoux");
+        account.setTotal(1000);
+        accountRepository.save(account); // déclenche un INSERT car isNew() retourne true
+
+        // ASSERT
+        Optional<Account> thomasLedoux = accountRepository.findById("tledoux");
+        assertThat(thomasLedoux).isPresent();
+        assertThat(thomasLedoux.get().getTotal()).isEqualTo(1000);
+    }
 }
