@@ -18,6 +18,9 @@ public class AccountRepositoryTest {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    DebitRepository debitRepository;
+
     @Test
     void test_database_is_created_with_2_accounts() {
         Iterable<Account> all = accountRepository.findAll();
@@ -60,5 +63,28 @@ public class AccountRepositoryTest {
         assertThat(result)
                 .extracting("accountId")
                 .containsOnly("imt-nantes");
+    }
+
+    @Test
+    void testSave() {
+        Account account = new Account();
+        account.setAccountId("nathalie");
+        account.setTotal(100);
+        account.setNew(true);
+
+        Debit debit = new Debit();
+        debit.setMontant(900);
+        debitRepository.save(debit);
+        account.addDebit(debit);
+
+        Debit debit2 = new Debit();
+        debit2.setMontant(900);
+        debitRepository.save(debit2);
+        account.addDebit(debit2);
+
+        Account save = accountRepository.save(account);
+
+        Optional<Account> nathalie = accountRepository.findById("nathalie");
+        System.out.println(nathalie);
     }
 }
