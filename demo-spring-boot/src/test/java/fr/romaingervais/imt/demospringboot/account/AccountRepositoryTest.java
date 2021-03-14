@@ -1,6 +1,5 @@
 package fr.romaingervais.imt.demospringboot.account;
 
-import fr.romaingervais.imt.demospringboot.DemoSpringBootApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +11,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-@SpringBootTest(classes = DemoSpringBootApplication.class)
+@SpringBootTest
 @Transactional
 public class AccountRepositoryTest {
 
