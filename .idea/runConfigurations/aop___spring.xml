@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="aop - spring" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.properties.Application" />
+    <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.aop.Application" />
     <module name="aop-spring" />
     <extension name="coverage">
       <pattern>
