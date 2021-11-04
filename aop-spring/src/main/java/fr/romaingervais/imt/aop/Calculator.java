@@ -1,4 +1,4 @@
-package fr.romaingervais.imt.properties;
+package fr.romaingervais.imt.aop;
 
 import org.springframework.stereotype.Service;
 
