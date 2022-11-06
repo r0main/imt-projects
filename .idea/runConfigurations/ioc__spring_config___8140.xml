@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ioc- spring - autre" type="Application" factoryName="Application">
+  <configuration default="false" name="ioc- spring config - 8140" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="fr.romaingervais.imt.config.Application" />
     <module name="ioc-spring" />
-    <option name="PROGRAM_PARAMETERS" value="9999" />
+    <option name="PROGRAM_PARAMETERS" value="8140" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="fr.romaingervais.imt.config.*" />
