@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ioc- java - 8140" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
     <option name="MAIN_CLASS_NAME" value="Application" />
     <module name="ioc-java" />
     <option name="PROGRAM_PARAMETERS" value="8140" />

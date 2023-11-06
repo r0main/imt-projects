@@ -15,7 +15,7 @@ public class TrainService {
         this.trainRepository = trainRepository;
     }
 
-    public boolean exists(String trainNumber) {
-        return trainRepository.exists(trainNumber);
-    }
-}
+    public void exists(String trainNumber) {
+        boolean trainExists = trainRepository.exists(trainNumber);
+        System.out.println("Train " + trainNumber + " exists ? " + trainExists);
+    }}
