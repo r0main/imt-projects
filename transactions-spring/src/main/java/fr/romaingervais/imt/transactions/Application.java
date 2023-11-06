@@ -9,7 +9,7 @@ public class Application {
 
     public static void main(String[] args) throws SQLException {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        BankServiceSpring bankService = applicationContext.getBean(BankServiceSpring.class);
+        BankServiceJdbc bankService = applicationContext.getBean(BankServiceJdbc.class);
 
         bankService.showAccounts();
         try {
