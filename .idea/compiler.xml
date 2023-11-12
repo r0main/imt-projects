@@ -20,7 +20,7 @@
       <module name="demo-spring-boot" target="11" />
       <module name="ioc-spring" target="19" />
       <module name="properties-spring" target="19" />
-      <module name="tests-java" target="11" />
+      <module name="tests-java" target="19" />
       <module name="tests-spring" target="11" />
       <module name="transactions-spring" target="19" />
     </bytecodeTargetLevel>
