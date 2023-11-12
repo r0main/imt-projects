@@ -32,7 +32,13 @@ class BankControllerTest {
         // ARRANGE
         RequestEntity<?> request = post(CONTROLLER_BASE_URL + "/transfert-money")
                 .contentType(MediaType.APPLICATION_JSON)
-                .body("{\"accountIdFrom\":\"imt-nantes\", \"accountIdTo\":\"rgervais\", \"amount\": 100000.0}");
+                .body("""
+                    {
+                        "accountIdFrom":"imt-nantes",
+                        "accountIdTo":"rgervais",
+                        "amount": 100000.0
+                    }
+                """);
 
         // ACT
         ResponseEntity<TransfertMoneyResponse> response = testRestTemplate.exchange(request, TransfertMoneyResponse.class);
