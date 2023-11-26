@@ -51,7 +51,7 @@ public class AccountRepositoryTest {
         List<Account> result = accountRepository.findByTotalGreaterThanEqualOrderByTotalDesc(100.0);
         assertThat(result)
                 .extracting("accountId")
-                .containsOnly("rgervais", "imt-nantes");
+                .containsExactly("imt-nantes", "rgervais");
     }
 
     @Test
